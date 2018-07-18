@@ -27,7 +27,7 @@ module.exports = function(app, passport, db) {
 // message board routes ===============================================================
 
     app.post('/items', (req, res) => {
-      db.collection('items').save({name: req.body.name, count: req.body.count}, (err, result) => {
+      db.collection('items').save({name: req.body.name, count: parseInt(req.body.count)}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
